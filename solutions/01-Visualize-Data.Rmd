@@ -18,7 +18,9 @@ warwick
 Run the code on the slide to make a graph. Pay strict attention to spelling, capitalization, and parentheses!
 
 ```{r}
-
+# remove
+ggplot(data = warwick) +
+  geom_point(mapping = aes(x = Rb_ppm, y = K_ppm)) 
 ```
 
 ## Your Turn 2
@@ -27,7 +29,7 @@ Add `color`, `size`, `alpha`, and `shape` aesthetics to your graph. Experiment.
 
 ```{r}
 ggplot(data = warwick) +
-  geom_point(mapping = aes(x = Rb_ppm, y = K_ppm))
+  geom_point(mapping = aes(x = Rb_ppm, y = K_ppm, shape = rock_type))
 ```
 
 ## Your Turn 3
@@ -35,7 +37,7 @@ ggplot(data = warwick) +
 Replace this scatterplot with one that draws boxplots. Use the cheatsheet. Try your best guess.
 
 ```{r}
-ggplot(warwick) + geom_point(aes(rock_name, K_ppm))
+ggplot(warwick) + geom_boxplot(aes(rock_name, K_ppm))
 ```
 
 ## Your Turn 4
@@ -43,7 +45,7 @@ ggplot(warwick) + geom_point(aes(rock_name, K_ppm))
 Make a histogram of the `K_ppm` variable from `warwick`.
 
 ```{r}
-
+ggplot(warwick) + geom_histogram(aes(K_ppm))
 ```
 
 ## Your Turn 5
@@ -51,7 +53,7 @@ Make a histogram of the `K_ppm` variable from `warwick`.
 Make a density plot of `K_ppm` colored by `rock_type`.
 
 ```{r}
-
+ggplot(warwick) + geom_density(aes(K_ppm, col = rock_type))
 ```
 
 ## Your Turn 6
@@ -59,7 +61,7 @@ Make a density plot of `K_ppm` colored by `rock_type`.
 Make a bar chart of `rock_type` colored by `rock_type`.
 
 ```{r}
-
+ggplot(warwick) + geom_bar(aes(x = rock_type, fill = rock_type))
 ```
 
 ## Your Turn 7
@@ -77,7 +79,7 @@ ggplot(warwick) +
 What does `getwd()` return?
 
 ```{r}
-
+getwd()
 ```
 
 ## Your Turn 9
@@ -85,7 +87,7 @@ What does `getwd()` return?
 Save the last plot and then locate it in the files pane.
 
 ```{r}
-
+ggsave("my_plot.pdf", height = 6, width = 6)
 ```
 
 ***
