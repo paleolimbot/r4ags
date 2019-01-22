@@ -3,3 +3,4 @@
 .RData
 .Ruserdata
 *.nb.html
+.DS_Store

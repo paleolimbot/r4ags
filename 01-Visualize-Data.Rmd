@@ -98,3 +98,8 @@ You can use this code template to make thousands of graphs with **ggplot2**.
 ggplot(data = <DATA>) +
   <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
 ```
+
+# More practice
+
+- The [Data Visualization](https://r4ds.had.co.nz/data-visualisation.html) chapter of [R for Data Science](https://r4ds.had.co.nz/)
+- The [Data Visualization Primer](https://rstudio.cloud/learn/primers/3) from [RStudio Cloud](http://rstudio.cloud)
