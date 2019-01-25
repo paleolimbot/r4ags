@@ -1,0 +1,74 @@
+---
+title: "R Notebook"
+output: html_document
+---
+
+```{r setup}
+library(tidyverse)
+library(geoscidata)
+```
+
+
+## Your Turn 1
+
+Create a scatterplot of `Mn_ppm` vs. `Fe_ppm`, with pretty labels for the `x` (`"Fe (ppm)"`), `y` (`"Mn (ppm)"`), and `color` (`"Rock Name"`) scales.
+
+```{r}
+ggplot(warwick) + 
+  geom_point(aes(x = Fe_ppm, y = Mn_ppm, color = rock_name)) +
+  labs(x = "Fe (ppm)", y = "Mn (ppm)", color = "Rock Name")
+```
+
+In addition to aesthetics like `x`, `y`, and `col`, you can use `title`, `subtitle`, and `caption` to include these elements in the plot portion of the output.
+
+## Your Turn 2
+
+Run the following two chunks to generate the two plots. What is the difference between them?
+
+```{r}
+ggplot(warwick) + 
+  geom_point(aes(Rb_ppm, K_ppm), alpha = 0.1, color = "blue")
+```
+
+```{r}
+ggplot(warwick) + 
+  geom_point(aes(Rb_ppm, K_ppm, alpha = 0.1, color = "blue"))
+```
+
+## Your Turn 3
+
+Predict what this code will do. Then run it.
+
+```{r}
+ggplot(warwick) + 
+  geom_point(aes(Rb_ppm, K_ppm)) +
+  facet_wrap(~rock_type)
+```
+
+## Your Turn 4
+
+Modify the following code to use one of ggplot2's built-in themes with a base font size of 10 points.
+
+```{r}
+ggplot(warwick) +
+  geom_point(aes(x = K_ppm, y = Rb_ppm), alpha = 0.1) +
+  facet_wrap(~rock_type) +
+  # could also be theme_bw(), theme_dark(), theme_light(), theme_minimal(), theme_linedraw()
+  theme_bw(10)
+```
+
+There are more themes in the _ggthemes_ package (try some!).
+
+***
+
+# Take aways
+
+- The `labs(<AESTHETIC> = "<TEXT>")` function sets the text that labels the scale for each aesthetic.
+- Use `<GEOM_FUNCTION>(aes(<MAPPED_AESTETIC> = <COLUMN>), <SET_AESTHETIC> = <VALUE>)` to __set__ values of aesthetics that are the same for the entire layer. 
+- `theme_*()` functions change the default appearance of graphic elements that are not related to the data.
+- Using `facet_wrap(~<COLUMN>)` is one way to split data into groups according to each value in`<COLUMN>`
+
+# More Practice
+
+- The [Exploratory Data Analysis](https://r4ds.had.co.nz/exploratory-data-analysis.html) chapter in [R for Data Science](https://r4ds.had.co.nz/).
+- The [Exploratory Data Analysis Primer](https://rstudio.cloud/learn/primers/3.1) from [RStudio Cloud](https://rstudio.cloud/)

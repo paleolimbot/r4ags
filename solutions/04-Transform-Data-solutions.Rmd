@@ -183,6 +183,19 @@ babynames %>%
   arrange(score)
 ```
 
+## Your Turn 13
+
+Fill in the blanks to convert the K and Fe columns from parts per million to percent (divide by 10,000), then plot the two columns on the X and Y axes using `geom_point()`.
+
+```{r}
+library(geoscidata)
+warwick %>%
+  mutate(K_percent = K_ppm / 10000, Fe_percent = Fe_ppm / 10000) %>%
+  filter(rock_name == "basalt") %>%
+  ggplot() +
+  geom_point(aes(x = K_percent, y = Fe_percent))
+```
+
 ***
 
 # Take aways
@@ -197,9 +210,9 @@ babynames %>%
 
 * Connect operations with `%>%`  
 
-* Use `left_join()`, `right_join()`, `full_join()`, or `inner_join()` to join datasets
+* The pattern `data_var %>% mutate(...) %>% filter(...) %>% ggplot() + <GEOM_FUNCTION>(aes(...))` is commonly used to calculate new columns needed for the plot, and/or to plot only part of a dataset.
 
 # More practice
 
 - The [Data Transformation](https://r4ds.had.co.nz/transform.html) chapter of [R for Data Science](https://r4ds.had.co.nz/)
-- The [Working With Data Primer](https://rstudio.cloud/learn/primers/2) from [RStudio Cloud](http://rstudio.cloud)
+- The [Working With Data Primers](https://rstudio.cloud/learn/primers/2) from [RStudio Cloud](http://rstudio.cloud), including [Isolating Data](https://rstudio.cloud/learn/primers/2.2) and [Deriving Information](https://rstudio.cloud/learn/primers/2.3)

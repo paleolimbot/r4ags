@@ -1,0 +1,31 @@
+---
+title: "R Notebook"
+output: html_document
+---
+
+## Your Turn 1
+
+Create a character vector of 3 fruit names and assign it to the variable `fruits`.
+
+```{r}
+
+```
+
+## Your Turn 2
+
+Use the `seq()` function 
+
+
+
+***
+
+# Take Aways
+
+- Use the `<-` operator to assign the result of an operation to a variable
+- 
+
+
+# More Practice
+
+- The [Workflow: Basics](https://r4ds.had.co.nz/workflow-basics.html) chapter of [R for Data Science](https://r4ds.had.co.nz/workflow-basics.html).
+- The [Programming Basics](https://rstudio.cloud/learn/primers/1.2) primer from [RStudio Cloud](https://rstudio.cloud/).

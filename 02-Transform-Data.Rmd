@@ -136,6 +136,8 @@ Use grouping to calculate and then plot the number of children born each year ov
 
 ```
 
+<!-- rewrite these and some other examples using warwick such that they make more sense -->
+
 ## Your Turn 11
 
 Use `min_rank()` and `mutate()` to rank each row in `babynames` from largest `n` to lowest `n`.
@@ -152,6 +154,8 @@ Then compute the median rank _for each combination of name and sex_, and arrange
 ```{r}
 
 ```
+
+
 
 ***
 
