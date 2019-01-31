@@ -1,0 +1,105 @@
+---
+title: "Geology-specific plots"
+output: html_notebook
+---
+
+```{r setup}
+library(tidyverse)
+library(geoscidata)
+```
+
+## Your Turn 1
+
+The following code will create a map of the sample locations using the `ggspatial` package. Use what you know about ggplots to make the following modifications:
+
+- Facet the plot by the `rock_type` variable using `facet_wrap()`
+- Use the `labs()` function to give appropriate labels to the scales
+
+```{r}
+library(ggspatial)
+
+ggplot(warwick) +
+  annotation_map_tile() +
+  geom_spatial_point(aes(longitude, latitude), alpha = 0.5) +
+  annotation_scale()
+```
+
+For more on how to use the [ggspatial package](https://github.com/paleolimbot/ggspatial), see the [vignette on CRAN](https://cran.r-project.org/web/packages/ggspatial/vignettes/ggspatial.html).
+
+## Your Turn 2
+
+The following code will generate a "spider plot" of all the samples that have a rock name of `"tuff"`, highlighting three samples. Modify the code below to give the plot:
+
+- Appropriate `labs()` for the X, Y, and colour scales
+- A log-Y axis
+- Your favourite built-in ggplot `theme_*()`.
+
+```{r}
+warwick_meas <- warwick %>%
+  filter(rock_name == "tuff") %>%
+  gather(element, value, ends_with("ppm")) %>%
+  mutate(element = element %>% str_remove("_ppm") %>% as_factor()) 
+
+warwick_ref <- warwick_meas %>%
+  filter(sample_id == "15GB0009") %>%
+  select(element, reference_value = value)
+
+warwick_norm <- warwick_meas %>%
+  left_join(warwick_ref, by = "element") %>%
+  mutate(reference = value / reference_value)
+
+ggplot(warwick_norm, aes(x = element, y = reference, group = sample_id)) +
+  geom_line(alpha = 0.1, col = "grey70") +
+  geom_line(
+    aes(col = sample_id), 
+    data = . %>% filter(sample_id %in% c("15GB0009", "11TM0391", "17TM0377"))
+  )
+```
+
+There are a number of new concepts in this code, including (1) using `gather()` to turn columns into rows (see the [tidying data tutorial](https://r4ds.had.co.nz/tidy-data.html)), (2) using `left_join()` to combine related datasets (see the [relational data tutorial](https://r4ds.had.co.nz/relational-data.html)), and (3) specifying a function as the `data` argument of a `geom_*()` function. Until you master all that, you should use this template, modifying the initial data (`warwick`) and the reference data (`warwick_ref`) to your needs.
+
+## Your Turn 3
+
+The following code below creates a stratigraphic diagram for geochemical data from [Alta Lake, Whistler, British Columbia](https://doi.org/10.1007/s10933-016-9919-x) using the [tidypaleo package](https://github.com/paleolimbot/tidypaleo). This package makes the `geom_lineh()` and `facet_geochem_wraph()` functions available, as well as the `alta_lake_geochem` dataset. 
+
+- Change the `geom_lineh()` to `geom_line()`. What is the difference between the two geom functions?
+- Change the `facet_geochem_wraph()` function to `facet_wrap()`. What is the difference between the two facet functions?
+
+```{r}
+library(tidypaleo)
+
+ggplot(alta_lake_geochem, aes(x = value, y = depth)) +
+  geom_lineh() +
+  geom_point() +
+  facet_geochem_wraph(vars(param), nrow = 1) +
+  labs(y = "Depth (cm)", x = NULL) +
+  scale_y_reverse()
+```
+
+(If you are plotting species abundance data, the following example may be more relevant to you)
+
+```{r}
+ggplot(keji_lakes_plottable, aes(x = rel_abund, y = depth)) +
+  geom_col_segsh() +
+  scale_y_reverse() +
+  theme_bw() +
+  facet_abundanceh(vars(taxon), vars(location)) +
+  labs(y = "Depth (cm)")
+```
+
+## Your Turn 4
+
+Modify the code for this ternary diagram to 
+
+- Map the `rock_type` variable to the `color` aesthetic. 
+- Use the `labs()` function to modify the labels for K, Ca, and Ti.
+- Apply your favourite built-in ggplot2 theme
+
+```{r}
+library(ggtern)
+
+ggtern(warwick, aes(x = K_ppm, y = Ca_ppm, z = Ti_ppm)) +
+  geom_point()
+```
+
+For more on how to use the [ggtern package](http://ggtern.com), see the [journal article](https://www.jstatsoft.org/article/view/v087c03). Note that the ggtern package breaks other plots (including those from the `tidypaleo` package), so you might want to generate these plots separately! (you can choose _Restart R_ to restart your R session to a clean session uncontaminated by _ggtern_).

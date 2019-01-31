@@ -22,7 +22,9 @@ Use the `seq()` function
 # Take Aways
 
 - Use the `<-` operator to assign the result of an operation to a variable
-- 
+- Functions get called in R in the form `<FUNCTION_NAME>(<ARGUMENTS>)`
+- Arguments can be specified by position or by name, and are separated by a comma `,`.
+- Many functions in R operate on vectors
 
 
 # More Practice

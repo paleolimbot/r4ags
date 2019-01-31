@@ -1,6 +1,6 @@
 ---
 title: "Reading Data in R (solutions)"
-output: html_document
+output: html_notebook
 ---
 
 ```{r setup}
@@ -12,7 +12,7 @@ library(tidyverse)
 Reading an Excel file requires the `read_excel()` function from the _readxl_ package. Load the _readxl_ package below (it is already installed on your computer if you installed the _tidyverse_ package):
 
 ```{r}
-library(readxl)
+
 ```
 
 ## Your Turn 2
@@ -20,8 +20,7 @@ library(readxl)
 Use the `read_excel()` function to read the `"warwick.xlsx"` file, and assign it to a variable called `warwick_xl`.
 
 ```{r}
-warwick_xl <- read_excel("../warwick.xlsx")
-warwick_xl
+
 ```
 
 ## Your Turn 3
@@ -30,23 +29,7 @@ The following code will read the `"warwick.csv"` file and assign it to the varia
 
 ```{r}
 warwick_csv <- read_csv(
-  "../warwick.csv",
-  col_types = cols(
-    .default = col_double(),
-    station_id = col_character(),
-    sample_id = col_character(),
-    type = col_character(),
-    rock_type = col_character(),
-    rock_name = col_character(),
-    rock_group = col_character(),
-    rock_age = col_character(),
-    rock_gcode = col_character(),
-    rock_desc = col_character(),
-    legend = col_character(),
-    date_sampled = col_date(format = ""),
-    geologist = col_character(),
-    quality = col_character()
-  )
+  "warwick.csv"
 )
 ```
 
@@ -55,12 +38,7 @@ warwick_csv <- read_csv(
 Use the `View()` function (i.e, click on the object name in the _Environment_ tab of RStudio), the `head()` function, and the `glimpse()` function to examine the three `warwick*` objects. Are they identical to each other (hint: there is only one difference)?
 
 ```{r}
-head(warwick)
-head(warwick_xl)
-head(warwick_csv)
 
-glimpse(warwick)
-glimpse(warwick_xl)
 ```
 
 ***

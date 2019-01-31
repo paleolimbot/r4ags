@@ -1,5 +1,5 @@
 ---
-title: "R Notebook"
+title: "Geology-specific plots (solutions)"
 output: html_document
 ---
 
@@ -20,9 +20,10 @@ library(ggspatial)
 
 ggplot(warwick) +
   annotation_map_tile() +
-  geom_spatial_point(aes(longitude, latitude), alpha = 0.5) +
+  geom_spatial_point(aes(longitude, latitude), alpha = 0.3) +
   annotation_scale() +
-  facet_wrap(~rock_type)
+  facet_wrap(~rock_type) +
+  labs(x = NULL, y = NULL)
 ```
 
 For more on how to use the [ggspatial package](https://github.com/paleolimbot/ggspatial), see the [vignette on CRAN](https://cran.r-project.org/web/packages/ggspatial/vignettes/ggspatial.html).
@@ -97,13 +98,15 @@ Modify the code for this ternary diagram to
 
 - Map the `rock_type` variable to the `color` aesthetic. 
 - Use the `labs()` function to modify the labels for K, Ca, and Ti.
+- Apply your favourite built-in ggplot2 theme
 
 ```{r}
 library(ggtern)
 
-ggtern(warwick, aes(x = K_ppm, y = Ca_ppm, z = Ti_ppm)) +
-  geom_point() +
+ggtern(warwick, aes(x = K_ppm, y = Ca_ppm, z = Ti_ppm, col = rock_type)) +
+  geom_point(alpha = 0.2) +
+  labs(x = "K", y = "Ca", z = "Ti") +
   theme_bw()
 ```
 
-For more on how to use the [ggtern package](http://ggtern.com), see the [journal article](https://www.jstatsoft.org/article/view/v087c03). Note that the ggtern package breaks other plots (including those from the `tidypaleo` package), so you might want to generate these plots separately!
+For more on how to use the [ggtern package](http://ggtern.com), see the [journal article](https://www.jstatsoft.org/article/view/v087c03). Note that the ggtern package breaks other plots (including those from the `tidypaleo` package), so you might want to generate these plots separately! (you can choose _Restart R_ to restart your R session to a clean session uncontaminated by _ggtern_).

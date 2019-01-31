@@ -130,32 +130,17 @@ Use `group_by()`, `summarise()`, and `arrange()` to display the ten most popular
 
 ## Your Turn 10
 
-Use grouping to calculate and then plot the number of children born each year over time.
+Fill in the blanks to convert the K and Fe columns from parts per million to percent (divide by 10,000), then plot the two columns on the X and Y axes using `geom_point()`.
 
 ```{r}
+library(geoscidata)
 
+warwick %>%
+  mutate(K_percent = K_ppm / 10000, Fe_percent = Fe_ppm / 10000) %>%
+  filter(rock_name == "basalt") %>%
+  ggplot() +
+  geom_point(aes(x = K_percent, y = Fe_percent))
 ```
-
-<!-- rewrite these and some other examples using warwick such that they make more sense -->
-
-## Your Turn 11
-
-Use `min_rank()` and `mutate()` to rank each row in `babynames` from largest `n` to lowest `n`.
-
-```{r}
-
-```
-
-## Your Turn 12
-
-Compute each name's rank _within its year and sex_. 
-Then compute the median rank _for each combination of name and sex_, and arrange the results from highest median rank to lowest.
-
-```{r}
-
-```
-
-
 
 ***
 
@@ -171,10 +156,7 @@ Then compute the median rank _for each combination of name and sex_, and arrange
 
 * Connect operations with `%>%`  
 
-* Use `left_join()`, `right_join()`, `full_join()`, or `inner_join()` to join datasets
-* Use `semi_join()` or `anti_join()` to filter datasets against each other
-
 # More practice
 
 - The [Data Transformation](https://r4ds.had.co.nz/transform.html) chapter of [R for Data Science](https://r4ds.had.co.nz/)
-- The [Working With Data Primer](https://rstudio.cloud/learn/primers/2) from [RStudio Cloud](http://rstudio.cloud)
+- The [Working With Data Primers](https://rstudio.cloud/learn/primers/2) from [RStudio Cloud](http://rstudio.cloud)

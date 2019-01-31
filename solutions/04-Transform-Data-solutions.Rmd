@@ -150,45 +150,11 @@ babynames %>%
 
 ## Your Turn 10
 
-Use grouping to calculate and then plot the number of children born each year over time.
-
-```{r}
-babynames %>%
-  group_by(year) %>% 
-  summarise(n_children = sum(n)) %>% 
-  ggplot() +
-    geom_line(mapping = aes(x = year, y = n_children))
-```
-
-## Your Turn 11
-
-Use `min_rank()` and `mutate()` to rank each row in `babynames` from largest `n` to lowest `n`.
-
-```{r}
-babynames %>% 
-  mutate(rank = min_rank(desc(prop)))
-```
-
-## Your Turn 12
-
-Compute each name's rank _within its year and sex_. 
-Then compute the median rank _for each combination of name and sex_, and arrange the results from highest median rank to lowest.
-
-```{r}
-babynames %>% 
-  group_by(year, sex) %>% 
-  mutate(rank = min_rank(desc(prop))) %>% 
-  group_by(name, sex) %>% 
-  summarise(score = median(rank)) %>% 
-  arrange(score)
-```
-
-## Your Turn 13
-
 Fill in the blanks to convert the K and Fe columns from parts per million to percent (divide by 10,000), then plot the two columns on the X and Y axes using `geom_point()`.
 
 ```{r}
 library(geoscidata)
+
 warwick %>%
   mutate(K_percent = K_ppm / 10000, Fe_percent = Fe_ppm / 10000) %>%
   filter(rock_name == "basalt") %>%

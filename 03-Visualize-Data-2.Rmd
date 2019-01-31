@@ -1,6 +1,6 @@
 ---
-title: "Visualizing Data (round 2) (solutions)"
-output: html_document
+title: "Visualizing Data (round 2)"
+output: html_notebook
 ---
 
 ```{r setup}
@@ -14,9 +14,7 @@ library(geoscidata)
 Create a scatterplot of `Mn_ppm` vs. `Fe_ppm`, with pretty labels for the `x` (`"Fe (ppm)"`), `y` (`"Mn (ppm)"`), and `color` (`"Rock Name"`) scales using the `labs()` function.
 
 ```{r}
-ggplot(warwick) + 
-  geom_point(aes(x = Fe_ppm, y = Mn_ppm, color = rock_name)) +
-  labs(x = "Fe (ppm)", y = "Mn (ppm)", color = "Rock Name")
+
 ```
 
 ## Your Turn 2
@@ -50,9 +48,7 @@ Modify the following code to use one of ggplot2's built-in themes with a base fo
 ```{r}
 ggplot(warwick) +
   geom_point(aes(x = K_ppm, y = Rb_ppm), alpha = 0.1) +
-  facet_wrap(~rock_type) +
-  # could also be theme_bw(), theme_dark(), theme_light(), theme_minimal(), theme_linedraw()
-  theme_bw(10)
+  facet_wrap(~rock_type)
 ```
 
 There are more themes in the _ggthemes_ package (try some!).
@@ -64,7 +60,7 @@ Use the `theme()` function to rotate the X axis text by 45 degrees.
 ```{r}
 ggplot(warwick) +
   geom_point(aes(x = K_ppm, y = Rb_ppm), alpha = 0.1) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme(_______ = ___________(angle = 45, hjust = 1))
 ```
 
 Note that any `theme()` elements have to get added after you set the global theme!
@@ -75,9 +71,8 @@ Note that any `theme()` elements have to get added after you set the global them
 
 - The `labs(<AESTHETIC> = "<TEXT>")` function sets the text that labels the scale for each aesthetic.
 - Use `<GEOM_FUNCTION>(aes(<MAPPED_AESTETIC> = <COLUMN>), <SET_AESTHETIC> = <VALUE>)` to __set__ values of aesthetics that are the same for the entire layer. 
-- Using `facet_wrap(~<COLUMN>)` is one way to split data into groups according to each value in`<COLUMN>`
 - `theme_*()` functions change the default appearance of graphic elements that are not related to the data.
-- Use the `theme()` and `element_*()` functions to make changes in the visual appearance of plots not related to the data.
+- Using `facet_wrap(~<COLUMN>)` is one way to split data into groups according to each value in`<COLUMN>`
 
 # More Practice
 

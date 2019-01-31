@@ -102,4 +102,4 @@ ggplot(data = <DATA>) +
 # More practice
 
 - The [Data Visualization](https://r4ds.had.co.nz/data-visualisation.html) chapter of [R for Data Science](https://r4ds.had.co.nz/)
-- The [Data Visualization Primer](https://rstudio.cloud/learn/primers/3) from [RStudio Cloud](http://rstudio.cloud)
+- The [Data Visualization Primers](https://rstudio.cloud/learn/primers/3) from [RStudio Cloud](http://rstudio.cloud)
