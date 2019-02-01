@@ -29,6 +29,7 @@ How many elements are in the vectors produced by:
 - `min(numbers)` (1)
 - `mean(numbers)` (1)
 - `median(numbers)` (1)
+- `sum(numbers)` (1)
 - `numbers * 3` (15)
 - `numbers / numbers` (15)
 - `numbers - 2` (15)

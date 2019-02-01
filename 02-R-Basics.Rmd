@@ -23,18 +23,19 @@ Use the `seq()` function to generate a numeric vector from 1 to 8 by 0.5. (1, 1.
 
 How many elements are in the vectors produced by:
 
-- `max(numbers)` (1)
-- `min(numbers)` (1)
-- `mean(numbers)` (1)
-- `median(numbers)` (1)
-- `numbers * 3` (15)
-- `numbers / numbers` (15)
-- `numbers - 2` (15)
-- `str_c("Fruit", fruits, sep = ": ")` (3)
-- `numbers >= 4` (15)
-- `numbers != 4` (15)
-- `fruits == "banana"` (3)
-- `fruits %in% c("banana", "pear")` (3)
+- `max(numbers)`
+- `min(numbers)`
+- `mean(numbers)`
+- `median(numbers)`
+- `sum(numbers)`
+- `numbers * 3`
+- `numbers / numbers`
+- `numbers - 2`
+- `str_c("Fruit", fruits, sep = ": ")`
+- `numbers >= 4`
+- `numbers != 4`
+- `fruits == "banana"`
+- `fruits %in% c("banana", "pear")`
 
 ```{r}
 
