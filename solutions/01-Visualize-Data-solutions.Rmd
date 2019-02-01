@@ -29,8 +29,21 @@ Add `color`, `size`, `alpha`, and `shape` aesthetics to your graph. Experiment.
 
 ```{r}
 ggplot(data = warwick) +
-  geom_point(mapping = aes(x = Rb_ppm, y = K_ppm, shape = rock_type))
+  geom_point(mapping = aes(x = Rb_ppm, y = K_ppm, color = rock_type))
 ```
+
+```{r}
+# for the slides only
+ggplot(data = warwick) +
+  geom_point(mapping = aes(x = Rb_ppm, y = K_ppm), color = "blue")
+```
+
+```{r}
+# for the slides only
+ggplot(data = warwick) +
+  geom_point(mapping = aes(x = Rb_ppm, y = K_ppm))
+```
+
 
 ## Your Turn 3
 
@@ -53,7 +66,7 @@ ggplot(warwick) + geom_histogram(aes(K_ppm))
 Make a density plot of `K_ppm` colored by `rock_type`.
 
 ```{r}
-ggplot(warwick) + geom_density(aes(K_ppm, col = rock_type))
+ggplot(warwick) + geom_density(aes(K_ppm, color = rock_type))
 ```
 
 ## Your Turn 6

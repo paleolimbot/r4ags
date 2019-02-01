@@ -35,7 +35,8 @@ ggplot(data = warwick) +
 Replace this scatterplot with one that draws boxplots. Use the cheatsheet. Try your best guess.
 
 ```{r}
-ggplot(warwick) + geom_point(aes(rock_name, K_ppm))
+ggplot(warwick) + 
+  geom_point(aes(rock_name, K_ppm))
 ```
 
 ## Your Turn 4

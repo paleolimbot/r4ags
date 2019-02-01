@@ -6,6 +6,16 @@ output: html_notebook
 ```{r setup}
 library(tidyverse)
 library(babynames)
+
+pollution <- tribble(
+       ~city,   ~size, ~amount, 
+  "New York", "large",      23,
+  "New York", "small",      14,
+    "London", "large",      22,
+    "London", "small",      16,
+   "Beijing", "large",      121,
+   "Beijing", "small",      56
+)
 ```
 
 ## babynames
@@ -129,6 +139,14 @@ Use `group_by()`, `summarise()`, and `arrange()` to display the ten most popular
 ```
 
 ## Your Turn 10
+
+Use grouping to calculate and then plot the number of children born each year over time.
+
+```{r}
+
+```
+
+## Your Turn 11
 
 Fill in the blanks to convert the K and Fe columns from parts per million to percent (divide by 10,000), then plot the two columns on the X and Y axes using `geom_point()`.
 
