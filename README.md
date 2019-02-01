@@ -3,7 +3,7 @@
 Welcome to the workshop! Today you will learn to create beautiful, effective, and reproducible graphics for geoscience using R.
 
 1. Download the class slides by clicking the green __Clone or download__ button above. (Then click __Download Zip__ in the tab that appears).
-2. Launch an RStudio IDE pre-loaded with today's exercises and solutions by clicking [here](#dummy) and logging in.
+2. Launch an RStudio IDE pre-loaded with today's exercises and solutions by clicking [here](https://rstudio.cloud/project/196303) and logging in.
 
 Resources for future learning:
 
