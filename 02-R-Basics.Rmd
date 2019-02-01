@@ -13,7 +13,7 @@ Create a character vector of 3 fruit names and assign it to the variable `fruits
 
 ## Your Turn 2
 
-Use the `seq()` function to generate a numeric vector from 1 to 8 by 0.5. (1, 1.5 ... 7.5, 8). Assign it to a variable called `numbers`. On the next line, type the variable name to view its contents.
+Bring up the help file for the `seq()` function. Then, use the `seq()` function to generate a numeric vector from 1 to 8 by 0.5. (1, 1.5 ... 7.5, 8) (the _examples_ section at the bottom is probably the most useful). Assign it to a variable called `numbers`. On the next line, type the variable name to view its contents.
 
 ```{r}
 
@@ -47,14 +47,6 @@ The following code returns `NA`. Fix it to get the mean of all the non-missing a
 
 ```{r}
 mean(c(1, 2, 3, NA))
-```
-
-## Your Turn 5
-
-Bring up the help file for the `lm` function. What does it do?
-
-```{r}
-?lm
 ```
 
 ***
