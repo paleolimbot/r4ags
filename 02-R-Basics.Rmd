@@ -1,6 +1,6 @@
 ---
 title: "R Basics"
-output: html_document
+output: html_notebook
 ---
 
 ## Your Turn 1
@@ -8,8 +8,7 @@ output: html_document
 Create a character vector of 3 fruit names and assign it to the variable `fruits`. On the next line, type the variable name to view its contents.
 
 ```{r}
-fruits <- c("apple", "banana", "pear")
-fruits
+
 ```
 
 ## Your Turn 2
@@ -17,8 +16,7 @@ fruits
 Use the `seq()` function to generate a numeric vector from 1 to 8 by 0.5. (1, 1.5 ... 7.5, 8). Assign it to a variable called `numbers`. On the next line, type the variable name to view its contents.
 
 ```{r}
-numbers <- seq(1, 8, by = 0.5)
-numbers
+
 ```
 
 ## Your Turn 3
@@ -47,8 +45,7 @@ How many elements are in the vectors produced by:
 The following code returns `NA`. Fix it to get the mean of all the non-missing arguments.
 
 ```{r}
-# help(mean)
-mean(c(1, 2, 3, NA), na.rm = TRUE)
+mean(c(1, 2, 3, NA))
 ```
 
 ## Your Turn 5
