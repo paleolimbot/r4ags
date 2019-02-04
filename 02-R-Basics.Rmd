@@ -24,17 +24,11 @@ Bring up the help file for the `seq()` function. Then, use the `seq()` function 
 How many elements are in the vectors produced by:
 
 - `max(numbers)`
-- `min(numbers)`
 - `mean(numbers)`
-- `median(numbers)`
-- `sum(numbers)`
 - `numbers * 3`
 - `numbers / numbers`
-- `numbers - 2`
-- `str_c("Fruit", fruits, sep = ": ")`
-- `numbers >= 4`
-- `numbers != 4`
-- `fruits == "banana"`
+- `paste("Fruit:", fruits)`
+- `numbers == 4`
 - `fruits %in% c("banana", "pear")`
 
 ```{r}
@@ -54,10 +48,10 @@ mean(c(1, 2, 3, NA))
 # Take Aways
 
 - Use the `<-` operator to assign the result of an expression to a variable
+- You can bring up the help file for a function using `?function_name` or `help(function_name)`
 - Functions have arguments that can be specified by position or by name, and are separated by a comma `,`.
 - Many functions in R operate on vectors, and return a vector of the same length ("vectorized"), or length 1 ("summary").
 - `NA` or missing values are propogated through calculations unless you specifically pass `na.rm = TRUE`.
-- You can bring up the help file for a function using `?function_name` or `help(function_name)`
 
 # More Practice
 

@@ -8,7 +8,7 @@ output: html_document
 Create a character vector of 3 fruit names and assign it to the variable `fruits`. On the next line, type the variable name to view its contents.
 
 ```{r}
-fruits <- c("apple", "banana", "pear")
+fruits <- c("apple", "orange", "banana")
 fruits
 ```
 
@@ -27,21 +27,21 @@ numbers
 How many elements are in the vectors produced by:
 
 - `max(numbers)` (1)
-- `min(numbers)` (1)
 - `mean(numbers)` (1)
-- `median(numbers)` (1)
-- `sum(numbers)` (1)
 - `numbers * 3` (15)
 - `numbers / numbers` (15)
-- `numbers - 2` (15)
-- `str_c("Fruit", fruits, sep = ": ")` (3)
-- `numbers >= 4` (15)
-- `numbers != 4` (15)
-- `fruits == "banana"` (3)
+- `paste("Fruit:", fruits)` (3)
+- `numbers == 4` (3)
 - `fruits %in% c("banana", "pear")` (3)
 
 ```{r}
-
+max(numbers)
+mean(numbers)
+numbers * 3
+numbers / numbers
+paste("Fruit:", fruits)
+numbers == 4
+fruits %in% c("banana", "pear")
 ```
 
 ## Your Turn 4
@@ -49,7 +49,6 @@ How many elements are in the vectors produced by:
 The following code returns `NA`. Fix it to get the mean of all the non-missing arguments.
 
 ```{r}
-# help(mean)
 mean(c(1, 2, 3, NA), na.rm = TRUE)
 ```
 
@@ -58,10 +57,10 @@ mean(c(1, 2, 3, NA), na.rm = TRUE)
 # Take Aways
 
 - Use the `<-` operator to assign the result of an expression to a variable
+- You can bring up the help file for a function using `?function_name` or `help(function_name)`
 - Functions have arguments that can be specified by position or by name, and are separated by a comma `,`.
 - Many functions in R operate on vectors, and return a vector of the same length ("vectorized"), or length 1 ("summary").
 - `NA` or missing values are propogated through calculations unless you specifically pass `na.rm = TRUE`.
-- You can bring up the help file for a function using `?function_name` or `help(function_name)`
 
 # More Practice
 
