@@ -19,9 +19,11 @@ Modify the following code to use one of ggplot2's built-in themes with a base fo
 ```{r}
 ggplot(warwick) + 
   geom_point(aes(x = Fe_ppm, y = Mn_ppm, color = rock_type)) +
-  # could also be theme_bw(), theme_dark(), theme_light(), theme_minimal(), theme_linedraw(), theme_classic()
+  # could also be theme_gray(), theme_dark(), theme_light(), theme_minimal(), theme_linedraw(), theme_classic()
   theme_bw(10)
 ```
+
+You can add `theme()` modifications after you've set the global theme with one of the above themes.
 
 ## Your Turn 2
 
@@ -56,33 +58,7 @@ Use the `facet_wrap()` function to produce a plot with four panels, one for each
 ```{r}
 ggplot(warwick) + 
   geom_point(aes(x = Fe_ppm, y = Mn_ppm, color = rock_type)) +
-  facet_wrap(~rock_type)
-```
-
-```{r}
-ggplot(warwick) + 
-  geom_point(aes(x = Fe_ppm, y = Mn_ppm, color = rock_type)) +
-  facet_wrap(~rock_type, scales = "free_x")
-```
-
-```{r}
-ggplot(warwick) + 
-  geom_point(aes(x = Fe_ppm, y = Mn_ppm, color = rock_type)) +
-  facet_wrap(~rock_type, scales = "free_y")
-```
-
-```{r}
-ggplot(warwick) + 
-  geom_point(aes(x = Fe_ppm, y = Mn_ppm, color = rock_type)) +
   facet_wrap(~rock_type, scales = "free")
-```
-
-```{r}
-ggplot(warwick) + 
-  geom_point(aes(x = Fe_ppm, y = Mn_ppm, color = rock_type)) +
-  facet_wrap(~rock_type, scales = "free") +
-  scale_x_continuous(limits = c(0, NA)) +
-  scale_y_continuous(limits = c(0, NA))
 ```
 
 ## Your Turn 5
@@ -95,45 +71,17 @@ ggplot(warwick) +
   coord_cartesian(xlim = c(0, 250000))
 ```
 
-```{r}
-ggplot(warwick) + 
-  geom_bar(aes(x = quality))
-```
-
-```{r}
-ggplot(warwick) + 
-  geom_bar(aes(x = quality)) +
-  coord_flip()
-```
-
-```{r}
-ggplot(warwick) + 
-  geom_violin(aes(x = rock_name, y = Mn_ppm)) +
-  coord_flip()
-```
-
-## Your Turn 6
-
-Use the `labs()` function to add labels to the x, y, and color scales. Put the units in parentheses after the variable name.
-
-```{r}
-ggplot(warwick) + 
-  geom_point(aes(x = Fe_ppm, y = Mn_ppm, color = rock_type)) +
-  labs(x = "Fe (ppm)", y = "Mn (ppm)", color = "Rock Type")
-```
-
 ## Exam
 
 Create a scatterplot of `warwick` using the `Ti_ppm` and `Mn_ppm` variables, colored by `rock_name`. Facet this plot by the `rock_type` variable, and apply your favourite built-in theme. (For bonus points, include log x and log y scales).
 
 ```{r}
 ggplot(warwick) +
-  geom_point(aes(Ti_ppm, Mn_ppm, color = rock_name)) +
-  facet_wrap(~rock_type, scales = "free") +
+  geom_point(aes(x = Ti_ppm, y = Mn_ppm, color = rock_name)) +
+  facet_wrap(~rock_type) +
   theme_bw() +
-  scale_x_log10() +
-  scale_y_log10() +
-  labs(x = "Ti (ppm)", y = "Mn (ppm)", color = "Rock Name")
+  labs(x = "Ti (ppm)", y = "Mn (ppm)", color = "Rock Name") +
+  scale_x_log10() + scale_y_log10()
 ```
 
 ***

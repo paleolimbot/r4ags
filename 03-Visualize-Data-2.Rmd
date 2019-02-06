@@ -3,78 +3,84 @@ title: "Visualizing Data (round 2)"
 output: html_notebook
 ---
 
+
 ```{r setup}
 library(tidyverse)
 library(geoscidata)
 ```
 
+```{r}
+warwick
+```
 
 ## Your Turn 1
 
-Create a scatterplot of `Mn_ppm` vs. `Fe_ppm`, with pretty labels for the `x` (`"Fe (ppm)"`), `y` (`"Mn (ppm)"`), and `color` (`"Rock Name"`) scales using the `labs()` function.
+Modify the following code to use one of ggplot2's built-in themes with a base font size of 10 points. Experiment! See `?theme_bw` for a list of themes that can be used.
 
 ```{r}
-
+ggplot(warwick) + 
+  geom_point(aes(x = Fe_ppm, y = Mn_ppm, color = rock_type))
 ```
 
 ## Your Turn 2
 
-Run the following two chunks to generate the two plots. What is the difference between them?
+Set the `palette` argument of `scale_color_brewer()` to one of the values listed in the "Palettes" section of the help file (`?scale_color_brewer`). You can also preview them at http://colorbrewer2.org/ .
 
 ```{r}
+?scale_color_brewer
 ggplot(warwick) + 
-  geom_point(aes(Rb_ppm, K_ppm), alpha = 0.1, color = "blue")
-```
-
-```{r}
-ggplot(warwick) + 
-  geom_point(aes(Rb_ppm, K_ppm, alpha = 0.1, color = "blue"))
+  geom_point(aes(x = Fe_ppm, y = Mn_ppm, color = rock_type)) +
+  scale_color_brewer()
 ```
 
 ## Your Turn 3
 
-Predict what this code will do. Then run it.
+Change the X and Y scales to log base 10 scales using the appropriate `scale_x_*()` and `scale_y_*()` functions.
 
 ```{r}
 ggplot(warwick) + 
-  geom_point(aes(Rb_ppm, K_ppm)) +
-  facet_wrap(~rock_type)
+  geom_point(aes(x = Fe_ppm, y = Mn_ppm, color = rock_type)) +
+  scale_x_log10() +
+  scale_y_log10()
 ```
 
 ## Your Turn 4
 
-Modify the following code to use one of ggplot2's built-in themes with a base font size of 10 points.
+Use the `facet_wrap()` function to produce a plot with four panels, one for each `rock_type`. Experiment with `scales = "free_x"`, `scales = "free_y"`, and `scales = "free"`.
 
 ```{r}
-ggplot(warwick) +
-  geom_point(aes(x = K_ppm, y = Rb_ppm), alpha = 0.1) +
-  facet_wrap(~rock_type)
+ggplot(warwick) + 
+  geom_point(aes(x = Fe_ppm, y = Mn_ppm, color = rock_type))
 ```
-
-There are more themes in the _ggthemes_ package (try some!).
 
 ## Your Turn 5
 
-Use the `theme()` function to rotate the X axis text by 45 degrees.
+Modify the `xlim` argument of `coord_cartesian()` to "zoom in" to the exclude the two outlying points with high Fe values.
 
 ```{r}
-ggplot(warwick) +
-  geom_point(aes(x = K_ppm, y = Rb_ppm), alpha = 0.1) +
-  theme(_______ = ___________(angle = 45, hjust = 1))
+ggplot(warwick) + 
+  geom_point(aes(x = Fe_ppm, y = Mn_ppm, color = rock_type))
 ```
 
-Note that any `theme()` elements have to get added after you set the global theme!
+## Exam
+
+Create a scatterplot of `warwick` using the `Ti_ppm` and `Mn_ppm` variables, colored by `rock_name`. Facet this plot by the `rock_type` variable, and apply your favourite built-in theme. (For bonus points, include log x and log y scales).
+
+```{r}
+
+```
 
 ***
 
 # Take aways
 
+- Themes control the non-data appearance of visual elements. Built-in themes can be added using `theme_*()` functions, and change the appearance of the whole plot.
+- The default scales can be modified using `scale_<AESTHETIC>_*()` functions. This includes the x-axis, y-axis, and other aesthetic scales.
+- Using `facet_wrap(~<COLUMN>)` is one way to split data into groups according to each value in`<COLUMN>`. The `scales` argument changes whether x scales, y scales, or both are identical in each panel.
+- Zoom in to a particular part of the plot by setting the `xlim` and `ylim` arguments of `coord_cartesian()`, or flip the x and y axes using `coord_flip()`.
 - The `labs(<AESTHETIC> = "<TEXT>")` function sets the text that labels the scale for each aesthetic.
-- Use `<GEOM_FUNCTION>(aes(<MAPPED_AESTETIC> = <COLUMN>), <SET_AESTHETIC> = <VALUE>)` to __set__ values of aesthetics that are the same for the entire layer. 
-- `theme_*()` functions change the default appearance of graphic elements that are not related to the data.
-- Using `facet_wrap(~<COLUMN>)` is one way to split data into groups according to each value in`<COLUMN>`
 
 # More Practice
 
-- The [Exploratory Data Analysis](https://r4ds.had.co.nz/exploratory-data-analysis.html) chapter in [R for Data Science](https://r4ds.had.co.nz/).
-- The [Exploratory Data Analysis Primer](https://rstudio.cloud/learn/primers/3.1) from [RStudio Cloud](https://rstudio.cloud/)
+- The [Exploratory Data Analysis](https://r4ds.had.co.nz/exploratory-data-analysis.html) and [Graphics for Communication](https://r4ds.had.co.nz/graphics-for-communication.html) chapters in [R for Data Science](https://r4ds.had.co.nz/).
+- The [Exploratory Data Analysis Primer](https://rstudio.cloud/learn/primers/3.1) and the [Plot Customization Primer](https://rstudio.cloud/learn/primers/3.8) from [RStudio Cloud](https://rstudio.cloud/) from [RStudio Cloud](https://rstudio.cloud/).
