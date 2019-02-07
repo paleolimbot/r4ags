@@ -45,7 +45,7 @@ mean(c(1, 2, 3, NA))
 
 ## Your Turn 5
 
-The following code loads the _readxl_ package, and loads data from the specified range of `warwick.xlsx`. What happens when you remove the `range` argument? Or the `sheet` argument?
+Modify the `range` argument in this call to `read_excel()` to read different regions of the sheet.
 
 ```{r}
 library(readxl)
