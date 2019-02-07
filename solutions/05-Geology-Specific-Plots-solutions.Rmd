@@ -53,7 +53,7 @@ warwick_norm <- warwick_meas %>%
 
 ggplot(warwick_norm) +
   geom_line(aes(x = element, y = reference, group = sample_id, color = rock_name), alpha = 0.3) +
-  labs(x = NULL, y = "Concentration / Reference concentration", col = "Rock Name") +
+  labs(x = NULL, y = "Concentration / Reference concentration", color = "Rock Name") +
   scale_y_log10() +
   theme_bw()
 ```
