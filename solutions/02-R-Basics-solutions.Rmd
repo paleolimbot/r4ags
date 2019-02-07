@@ -52,6 +52,18 @@ The following code returns `NA`. Fix it to get the mean of all the non-missing a
 mean(c(1, 2, 3, NA), na.rm = TRUE)
 ```
 
+## Your Turn 5
+
+The following code loads the _readxl_ package, and loads data from the specified range of `warwick.xlsx`. What happens when you remove the `range` argument? Or the `sheet` argument?
+
+```{r}
+library(readxl)
+warwick_xl <- read_excel("../warwick.xlsx", sheet = "Sheet1", range = "A1:AR1845")
+warwick_xl
+```
+
+You can load CSV files using `read_csv()`, and TSV files using `read_tsv()`. __Make sure to use the 'underscore' version, not the 'dot' version (i.e., don't use `read.csv()`)!__ Read spatial formats using the _sf_ package function `read_sf()`.
+
 ***
 
 # Take Aways
@@ -61,8 +73,10 @@ mean(c(1, 2, 3, NA), na.rm = TRUE)
 - Functions have arguments that can be specified by position or by name, and are separated by a comma `,`.
 - Many functions in R operate on vectors, and return a vector of the same length ("vectorized"), or length 1 ("summary").
 - `NA` or missing values are propogated through calculations unless you specifically pass `na.rm = TRUE`.
+- Read functions start with `read_*()` and include `readxl::read_excel()`, `read_csv()`, and `read_tsv()`.
 
 # More Practice
 
-- The [Workflow: Basics](https://r4ds.had.co.nz/workflow-basics.html) chapter of [R for Data Science](https://r4ds.had.co.nz/workflow-basics.html).
+- The [Workflow: Basics](https://r4ds.had.co.nz/workflow-basics.html) chapter of [R for Data Science](https://r4ds.had.co.nz).
+- The [Data import](https://r4ds.had.co.nz/data-import.html) chapter of [R for Data Science](https://r4ds.had.co.nz).
 - The [Programming Basics](https://rstudio.cloud/learn/primers/1.2) primer from [RStudio Cloud](https://rstudio.cloud/).
