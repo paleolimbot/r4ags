@@ -1,4 +1,6 @@
 install.packages(c("remotes", "sf", "ggspatial", "ggthemes", "babynames", "formatR", "gapminder", "hexbin", "mgcv", "maps", "mapproj", "nycflights13", "rmarkdown", "tidyverse", "viridis")) 
 remotes::install_github("paleolimbot/geoscidata")
 remotes::install_github("paleolimbot/tidypaleo")
+remotes::install_github("paleolimbot/chemr")
+remotes::install_github("paleolimbot/tidyphreeqc")
 remotes::install_github("thomasp85/patchwork")
